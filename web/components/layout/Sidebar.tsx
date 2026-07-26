@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -56,8 +57,8 @@ export function Sidebar() {
       {/* Brand Header */}
       <div className="flex h-16 items-center justify-between px-4 border-b border-white/15 bg-gradient-to-b from-white/[0.03] to-transparent">
         <Link href="/" className="flex items-center gap-3 overflow-hidden">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-cyan-400/50 bg-gradient-to-tr from-cyan-500/20 to-emerald-500/20 shadow-[0_0_15px_rgba(0,242,254,0.25)]">
-            <Globe className="h-5 w-5 text-cyan-400 animate-pulse" />
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-cyan-400/60 bg-black shadow-[0_0_15px_rgba(0,242,254,0.3)] overflow-hidden">
+            <Image src="/logo.svg" width={36} height={36} alt="Gaia Logo" className="h-full w-full object-cover" />
           </div>
           <AnimatePresence>
             {!isCollapsed && (

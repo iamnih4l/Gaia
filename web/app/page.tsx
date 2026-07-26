@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Globe,
@@ -31,8 +32,8 @@ export default function LandingPage() {
       {/* Top Navigation Bar */}
       <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-white/15 bg-black/90 px-6 lg:px-12 backdrop-blur-2xl shadow-[0_4px_30px_rgba(0,0,0,0.9)]">
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/50 bg-gradient-to-tr from-cyan-500/20 to-emerald-500/20 shadow-[0_0_15px_rgba(0,242,254,0.25)]">
-            <Globe className="h-5 w-5 text-cyan-400 animate-pulse" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-400/60 bg-black shadow-[0_0_15px_rgba(0,242,254,0.3)] overflow-hidden">
+            <Image src="/logo.svg" width={36} height={36} alt="Gaia Logo" className="h-full w-full object-cover" />
           </div>
           <span className="text-sm sm:text-base font-mono font-bold tracking-wider text-white uppercase flex items-center gap-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
             GAIA <span className="text-[9px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">SYS v2.4 ORBITAL COMMAND</span>
