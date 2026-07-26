@@ -1,0 +1,28 @@
+# ============================================================================
+# Physics-Informed Neural Network Configuration
+# ============================================================================
+
+name: "pinn"
+type: "physics_informed_nn"
+description: "Physics-Informed Neural Network with conservation constraints"
+
+architecture:
+  input_dim: 7
+  hidden_dim: 256
+  n_layers: 6
+  dropout: 0.05
+  activation: "tanh"
+  output_dim: 1
+
+physics:
+  constraints:
+    - "energy_conservation"
+    - "mass_conservation"
+  physics_loss_weight: 0.1        # Weight of physics loss vs data loss
+  pde_residual_points: 1000       # Collocation points for PDE residual
+  boundary_condition_weight: 0.05
+
+uncertainty:
+  mc_dropout: true
+  mc_samples: 30
+  dropout_rate: 0.05

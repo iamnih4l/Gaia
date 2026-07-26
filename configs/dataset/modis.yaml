@@ -1,0 +1,48 @@
+# ============================================================================
+# MODIS/VIIRS Vegetation Index Dataset Configuration
+# ============================================================================
+
+name: "modis"
+description: "MODIS/VIIRS vegetation indices (NDVI, EVI) for Amazon monitoring"
+
+source:
+  api: "nasa_lp_daac"
+  product: "MOD13C2"  # Monthly 0.05° vegetation indices
+  url: "https://e4ftl01.cr.usgs.gov/MOLT/MOD13C2.061/"
+
+variables:
+  - "NDVI"
+  - "EVI"
+  - "pixel_reliability"
+
+spatial:
+  resolution: 0.05
+  region: "amazon"
+  bounds:
+    lat_min: -20.0
+    lat_max: 5.0
+    lon_min: -75.0
+    lon_max: -45.0
+
+temporal:
+  start_year: 2000
+  end_year: 2024
+  frequency: "monthly"
+
+processing:
+  compute_anomalies: true
+  baseline_period: [2001, 2010]
+  quality_filter: true
+  min_reliability: 0
+  detrend: true
+  detrend_method: "linear"
+  normalize: true
+  normalize_method: "standard"
+
+loader:
+  batch_size: 32
+  sequence_length: 48
+  stride: 1
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15

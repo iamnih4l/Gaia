@@ -1,0 +1,23 @@
+# ============================================================================
+# SVM Baseline Configuration
+# ============================================================================
+
+name: "svm"
+type: "svm"
+description: "Support Vector Machine baseline with RBF kernel"
+
+architecture:
+  kernel: "rbf"
+  C: 1.0
+  gamma: "scale"
+  class_weight: "balanced"
+  probability: true
+  max_iter: 5000
+
+features:
+  - "autocorrelation_lag1"
+  - "variance"
+  - "skewness"
+  - "kurtosis"
+  - "trend_slope"
+  - "detrended_variance"

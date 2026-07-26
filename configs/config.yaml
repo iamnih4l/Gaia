@@ -1,0 +1,71 @@
+# ============================================================================
+# Gaia — Master Configuration
+# ============================================================================
+# Usage: python scripts/train.py --config-name=config
+# Override: python scripts/train.py model=transformer dataset=era5
+# ============================================================================
+
+defaults:
+  - dataset: era5
+  - model: transformer
+  - training: default
+  - evaluation: default
+  - inference: default
+  - _self_
+
+# ─── Project ───
+project:
+  name: "Gaia"
+  version: "0.1.0"
+  description: "Gaia: A Modular, Research-Grade AI System for Early Detection of Climate Tipping Points"
+  seed: 42
+  deterministic: true
+
+# ─── Paths ───
+paths:
+  root: ${hydra:runtime.cwd}
+  data_dir: ${paths.root}/data
+  raw_dir: ${paths.data_dir}/raw
+  processed_dir: ${paths.data_dir}/processed
+  checkpoint_dir: ${paths.root}/checkpoints
+  output_dir: ${paths.root}/outputs
+  log_dir: ${paths.root}/logs
+  cache_dir: ${paths.root}/.cache
+
+# ─── Logging ───
+logging:
+  level: "INFO"
+  format: "{time:YYYY-MM-DD HH:mm:ss} | {level:<8} | {name}:{function}:{line} - {message}"
+  file: ${paths.log_dir}/gaia.log
+  rotation: "10 MB"
+  retention: "30 days"
+
+# ─── Experiment Tracking ───
+tracking:
+  backend: "wandb"  # wandb | mlflow | none
+  wandb:
+    project: "Gaia"
+    entity: null
+    tags: []
+    notes: ""
+  mlflow:
+    tracking_uri: "mlruns"
+    experiment_name: "climate_tipping_ai"
+
+# ─── Hardware ───
+hardware:
+  accelerator: "auto"  # cpu | gpu | tpu | auto
+  devices: "auto"
+  precision: "16-mixed"  # 32 | 16-mixed | bf16-mixed
+  num_workers: 4
+  pin_memory: true
+
+# ─── Hydra ───
+hydra:
+  run:
+    dir: ${paths.output_dir}/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: ${paths.output_dir}/multirun/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${hydra.job.num}
+  job:
+    chdir: false

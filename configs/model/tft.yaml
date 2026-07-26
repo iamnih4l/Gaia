@@ -1,0 +1,24 @@
+# ============================================================================
+# Temporal Fusion Transformer Configuration
+# ============================================================================
+
+name: "tft"
+type: "temporal_fusion_transformer"
+description: "Temporal Fusion Transformer with variable selection and multi-horizon output"
+
+architecture:
+  input_dim: 7
+  hidden_dim: 256
+  n_heads: 4
+  n_layers: 3
+  dropout: 0.1
+  output_dim: 1
+  num_static_features: 0
+  num_known_features: 2    # e.g., month, year
+  num_observed_features: 5
+  quantiles: [0.1, 0.5, 0.9]  # For probabilistic output
+
+uncertainty:
+  mc_dropout: true
+  mc_samples: 50
+  dropout_rate: 0.1

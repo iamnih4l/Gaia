@@ -1,0 +1,159 @@
+[tool.poetry]
+name = "gaia"
+version = "0.1.0"
+description = "Gaia: A Modular, Research-Grade AI System for Early Detection of Climate Tipping Points — Research-grade system for detecting early-warning signals of critical climate transitions using state-of-the-art machine learning."
+authors = ["Gaia Research Team"]
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/gaia-ai/gaia"
+keywords = ["climate", "tipping-points", "early-warning", "machine-learning", "earth-science"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.12",
+]
+packages = [
+    { include = "datasets" },
+    { include = "models" },
+    { include = "preprocessing" },
+    { include = "feature_engineering" },
+    { include = "training" },
+    { include = "evaluation" },
+    { include = "visualization" },
+    { include = "api" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+# Core ML
+torch = "^2.3.0"
+torchvision = "^0.18.0"
+torchaudio = "^2.3.0"
+pytorch-lightning = "^2.3.0"
+torch-geometric = "^2.5.0"
+
+# ML / Statistics
+scikit-learn = "^1.5.0"
+statsmodels = "^0.14.0"
+scipy = "^1.14.0"
+transformers = "^4.42.0"
+
+# Data Processing
+numpy = "^1.26.0"
+pandas = "^2.2.0"
+xarray = "^2024.6.0"
+netcdf4 = "^1.7.0"
+h5netcdf = "^1.3.0"
+dask = {extras = ["complete"], version = "^2024.6.0"}
+zarr = "^2.18.0"
+cfgrib = "^0.9.12"
+cdsapi = "^0.7.0"
+
+# Configuration & Experiment Tracking
+hydra-core = "^1.3.0"
+omegaconf = "^2.3.0"
+wandb = "^0.17.0"
+mlflow = "^2.14.0"
+
+# Causal Inference
+tigramite = "^5.2.0"
+
+# Visualization
+matplotlib = "^3.9.0"
+seaborn = "^0.13.0"
+plotly = "^5.22.0"
+cartopy = "^0.23.0"
+
+# API
+fastapi = "^0.111.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+pydantic = "^2.7.0"
+python-multipart = "^0.0.9"
+
+# Utilities
+loguru = "^0.7.0"
+rich = "^13.7.0"
+tqdm = "^4.66.0"
+pyyaml = "^6.0.0"
+joblib = "^1.4.0"
+shap = "^0.45.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+pytest-cov = "^5.0.0"
+pytest-asyncio = "^0.23.0"
+httpx = "^0.27.0"
+black = "^24.4.0"
+ruff = "^0.5.0"
+mypy = "^1.10.0"
+pre-commit = "^3.7.0"
+ipykernel = "^6.29.0"
+jupyter = "^1.0.0"
+nbformat = "^5.10.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+train = "scripts.train:main"
+evaluate = "scripts.evaluate:main"
+predict = "scripts.run_inference:main"
+download-data = "scripts.download_data:main"
+
+# ─── Tool Configurations ───
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "D",    # pydocstyle
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "TCH",  # flake8-type-checking
+    "RUF",  # ruff-specific rules
+]
+ignore = [
+    "D100",  # Missing docstring in public module
+    "D104",  # Missing docstring in public package
+    "D203",  # 1 blank line required before class docstring
+    "D213",  # Multi-line docstring summary should start at the second line
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["datasets", "models", "preprocessing", "feature_engineering", "training", "evaluation", "visualization", "inference", "api"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks integration tests",
+    "gpu: marks tests requiring GPU",
+]

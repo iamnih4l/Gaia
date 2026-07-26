@@ -1,0 +1,31 @@
+# ============================================================================
+# Graph Attention Network Configuration
+# ============================================================================
+
+name: "gat"
+type: "graph_attention"
+description: "Graph Attention Network with multi-head attention for climate graphs"
+
+architecture:
+  node_features: 7
+  hidden_channels: 64
+  n_layers: 3
+  n_heads: 8
+  dropout: 0.1
+  output_dim: 1
+  activation: "elu"
+  pool_type: "global_mean"
+  batch_norm: true
+  residual: true
+  concat_heads: true
+  edge_dim: 1             # Edge feature dimension (e.g., distance)
+
+graph:
+  construction: "knn"
+  k_neighbors: 8
+  include_self_loops: true
+
+uncertainty:
+  mc_dropout: true
+  mc_samples: 30
+  dropout_rate: 0.1

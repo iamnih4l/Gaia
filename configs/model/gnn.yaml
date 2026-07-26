@@ -1,0 +1,33 @@
+# ============================================================================
+# Graph Neural Network Configuration
+# ============================================================================
+
+name: "gnn"
+type: "climate_gnn"
+description: "Graph Convolutional Network for spatially-distributed climate data"
+
+architecture:
+  node_features: 7
+  hidden_channels: 128
+  n_layers: 4
+  dropout: 0.1
+  output_dim: 1
+  conv_type: "GCN"        # GCN | GraphConv | SAGEConv
+  activation: "relu"
+  pool_type: "global_mean"  # global_mean | global_max | global_add
+  batch_norm: true
+  residual: true
+  edge_features: 0
+
+graph:
+  construction: "knn"     # knn | radius | correlation | teleconnection
+  k_neighbors: 8
+  radius: 5.0             # degrees
+  correlation_threshold: 0.5
+  include_self_loops: true
+  dynamic: false
+
+uncertainty:
+  mc_dropout: true
+  mc_samples: 30
+  dropout_rate: 0.1

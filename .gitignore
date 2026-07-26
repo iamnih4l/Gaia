@@ -1,0 +1,90 @@
+# ============================================================================
+# ClimateTippingAI — .gitignore
+# ============================================================================
+
+# ─── Python ───
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+# ─── Virtual Environments ───
+.env
+.venv
+env/
+venv/
+ENV/
+
+# ─── IDE ───
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ─── Jupyter ───
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─── PyTorch / ML ───
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+checkpoints/
+outputs/
+runs/
+wandb/
+mlruns/
+lightning_logs/
+
+# ─── Data ───
+data/
+*.nc
+*.nc4
+*.grib
+*.grib2
+*.hdf
+*.hdf5
+*.h5
+*.zarr/
+*.csv
+!configs/**/*.csv
+
+# ─── OS ───
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Hydra ───
+outputs/
+multirun/
+
+# ─── Testing / Coverage ───
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ─── Docker ───
+*.log
+
+# ─── Misc ───
+*.bak
+*.tmp
+*.temp
+.secrets/

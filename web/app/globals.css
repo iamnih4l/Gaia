@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #F8F9FA;
+  --surface: #030509;
+  --surface-hover: #080D1A;
+  --surface-card: rgba(6, 10, 18, 0.75);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(0, 242, 254, 0.45);
+  
+  --deep-blue: #030509;
+  --ocean-cyan: #00F2FE;
+  --ocean-cyan-light: #4FACFE;
+  --forest-green: #10B981;
+  --forest-green-light: #34D399;
+  --aurora-purple: #A855F7;
+  --aurora-pink: #EC4899;
+  --danger-orange: #F97316;
+  --warning-yellow: #F59E0B;
+  --ice-white: #F8F9FA;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-card: var(--surface-card);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+
+  --color-deep-blue: var(--deep-blue);
+  --color-ocean-cyan: var(--ocean-cyan);
+  --color-ocean-light: var(--ocean-cyan-light);
+  --color-forest-green: var(--forest-green);
+  --color-forest-light: var(--forest-green-light);
+  --color-aurora-purple: var(--aurora-purple);
+  --color-aurora-pink: var(--aurora-pink);
+  --color-danger-orange: var(--danger-orange);
+  --color-warning-yellow: var(--warning-yellow);
+  --color-ice-white: var(--ice-white);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Deep Space Void Background Radial Glow */
+body::before {
+  content: "";
+  position: fixed;
+  top: -20%;
+  left: 20%;
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.04) 0%, rgba(168, 85, 247, 0.02) 50%, transparent 70%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -20%;
+  right: 10%;
+  width: 50vw;
+  height: 50vh;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, rgba(0, 242, 254, 0.02) 50%, transparent 70%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Radar Scanline Grid for Orbital Station Feel */
+.scanline-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Space System Panel & HUD Glassmorphism */
+.space-panel {
+  background: rgba(4, 7, 14, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.space-panel:hover {
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 15px 50px -10px rgba(0, 0, 0, 0.9), 0 0 25px -5px rgba(0, 242, 254, 0.15), inset 0 1px 0 0 rgba(0, 242, 254, 0.3);
+}
+
+/* Technical HUD Corner Brackets [ ] */
+.hud-bracket {
+  position: relative;
+}
+
+.hud-bracket::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid rgba(0, 242, 254, 0.6);
+  border-left: 2px solid rgba(0, 242, 254, 0.6);
+  border-top-left-radius: 4px;
+  pointer-events: none;
+}
+
+.hud-bracket::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid rgba(0, 242, 254, 0.6);
+  border-right: 2px solid rgba(0, 242, 254, 0.6);
+  border-bottom-right-radius: 4px;
+  pointer-events: none;
+}
+
+/* Glassmorphic Space Buttons */
+.space-button {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.space-button:hover {
+  background: rgba(0, 242, 254, 0.12);
+  border-color: rgba(0, 242, 254, 0.6);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.25), inset 0 0 15px rgba(0, 242, 254, 0.15);
+  color: #00F2FE;
+  text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+}
+
+/* Neon Glow Accents */
+.glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(0, 242, 254, 0.4);
+}
+
+.glow-purple {
+  box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.4);
+}
+
+.glow-danger {
+  box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.45);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
+}
+
+/* Custom Telemetry Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 254, 0.25);
+  border-radius: 2px;
+  border: 1px solid rgba(0, 242, 254, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 242, 254, 0.5);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}

@@ -1,0 +1,82 @@
+# ============================================================================
+# ERA5 Reanalysis Dataset Configuration
+# ============================================================================
+
+name: "era5"
+description: "ECMWF ERA5 global atmospheric reanalysis (1950-present)"
+
+# ─── Source ───
+source:
+  api: "cdsapi"
+  product: "reanalysis-era5-single-levels-monthly-means"
+  url: "https://cds.climate.copernicus.eu/api/v2"
+
+# ─── Variables ───
+variables:
+  - "2m_temperature"
+  - "mean_sea_level_pressure"
+  - "10m_u_component_of_wind"
+  - "10m_v_component_of_wind"
+  - "total_precipitation"
+  - "sea_surface_temperature"
+  - "surface_net_solar_radiation"
+
+# ─── Spatial ───
+spatial:
+  resolution: 0.25  # degrees
+  bounds:
+    lat_min: -90.0
+    lat_max: 90.0
+    lon_min: -180.0
+    lon_max: 180.0
+
+# ─── Temporal ───
+temporal:
+  start_year: 1950
+  end_year: 2024
+  frequency: "monthly"
+
+# ─── Regions of Interest ───
+regions:
+  amazon:
+    lat_min: -20.0
+    lat_max: 5.0
+    lon_min: -75.0
+    lon_max: -45.0
+  north_atlantic:
+    lat_min: 30.0
+    lat_max: 70.0
+    lon_min: -80.0
+    lon_max: 0.0
+  greenland:
+    lat_min: 60.0
+    lat_max: 85.0
+    lon_min: -75.0
+    lon_max: -10.0
+  antarctic:
+    lat_min: -90.0
+    lat_max: -60.0
+    lon_min: -180.0
+    lon_max: 180.0
+  arctic:
+    lat_min: 65.0
+    lat_max: 90.0
+    lon_min: -180.0
+    lon_max: 180.0
+
+# ─── Processing ───
+processing:
+  compute_anomalies: true
+  detrend: true
+  detrend_method: "linear"  # linear | polynomial | loess
+  normalize: true
+  normalize_method: "standard"  # standard | minmax | robust
+
+# ─── DataLoader ───
+loader:
+  batch_size: 32
+  sequence_length: 60  # months
+  stride: 1
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15

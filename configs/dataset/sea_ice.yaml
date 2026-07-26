@@ -1,0 +1,45 @@
+# ============================================================================
+# NSIDC Sea Ice Index Dataset Configuration
+# ============================================================================
+
+name: "sea_ice"
+description: "NSIDC Sea Ice Index for Arctic/Antarctic sea ice extent monitoring"
+
+source:
+  api: "nsidc"
+  product: "G02135"
+  url: "https://nsidc.org/data/G02135"
+
+variables:
+  - "sea_ice_extent"
+  - "sea_ice_area"
+  - "sea_ice_concentration"
+
+spatial:
+  resolution: 25.0  # km (native grid)
+  regions:
+    arctic:
+      hemisphere: "north"
+    antarctic:
+      hemisphere: "south"
+
+temporal:
+  start_year: 1979
+  end_year: 2024
+  frequency: "monthly"
+
+processing:
+  compute_anomalies: true
+  baseline_period: [1981, 2010]
+  detrend: true
+  detrend_method: "linear"
+  normalize: true
+  normalize_method: "standard"
+
+loader:
+  batch_size: 32
+  sequence_length: 60
+  stride: 1
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15

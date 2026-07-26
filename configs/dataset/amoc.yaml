@@ -1,0 +1,44 @@
+# ============================================================================
+# RAPID/MOCHA/OSNAP AMOC Dataset Configuration
+# ============================================================================
+
+name: "amoc"
+description: "RAPID-MOCHA and OSNAP AMOC transport measurements"
+
+source:
+  api: "rapid"
+  product: "RAPID-MOCHA-WBTS"
+  url: "https://rapid.ac.uk/rapidmoc/"
+
+variables:
+  - "moc_transports"      # Total AMOC transport (Sv)
+  - "florida_current"     # Florida Current transport
+  - "ekman_transport"     # Wind-driven Ekman transport
+  - "upper_mid_ocean"     # Upper mid-ocean transport
+
+spatial:
+  latitude: 26.5  # °N (RAPID array location)
+  osnap_latitudes: [53.0, 60.0]
+
+temporal:
+  start_year: 2004
+  end_year: 2024
+  frequency: "monthly"
+  raw_frequency: "12-hourly"
+
+processing:
+  compute_anomalies: true
+  baseline_period: [2004, 2014]
+  smooth_window: 12  # months (annual moving average)
+  detrend: true
+  detrend_method: "linear"
+  normalize: true
+  normalize_method: "standard"
+
+loader:
+  batch_size: 16
+  sequence_length: 48
+  stride: 1
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15

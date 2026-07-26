@@ -1,0 +1,27 @@
+# ============================================================================
+# Random Forest Baseline Configuration
+# ============================================================================
+
+name: "random_forest"
+type: "random_forest"
+description: "Random forest classifier baseline with handcrafted EWS features"
+
+architecture:
+  n_estimators: 500
+  max_depth: 15
+  min_samples_split: 5
+  min_samples_leaf: 2
+  max_features: "sqrt"
+  class_weight: "balanced"
+  n_jobs: -1
+  random_state: 42
+
+features:
+  - "autocorrelation_lag1"
+  - "variance"
+  - "skewness"
+  - "kurtosis"
+  - "trend_slope"
+  - "detrended_variance"
+  - "rolling_mean_12"
+  - "rolling_std_12"

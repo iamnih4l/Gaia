@@ -1,0 +1,38 @@
+# ============================================================================
+# Example Experiment: Amazon Dieback Detection
+# ============================================================================
+
+# @package _global_
+
+defaults:
+  - override /dataset: modis
+  - override /model: transformer
+  - override /training: default
+
+experiment:
+  name: "amazon_dieback_transformer"
+  description: "Detect Amazon rainforest dieback using Time Series Transformer on MODIS NDVI"
+  tags: ["amazon", "dieback", "transformer", "ndvi"]
+
+dataset:
+  processing:
+    compute_anomalies: true
+    detrend: true
+  loader:
+    sequence_length: 48
+    batch_size: 32
+
+model:
+  architecture:
+    input_dim: 3
+    d_model: 128
+    n_heads: 4
+    n_encoder_layers: 4
+    d_ff: 512
+
+training:
+  epochs: 50
+  optimizer:
+    lr: 5.0e-5
+  early_stopping:
+    patience: 10

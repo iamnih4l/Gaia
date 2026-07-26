@@ -1,0 +1,53 @@
+# ============================================================================
+# Evaluation Configuration
+# ============================================================================
+
+# ─── Metrics ───
+metrics:
+  classification:
+    - "roc_auc"
+    - "pr_auc"
+    - "f1"
+    - "precision"
+    - "recall"
+    - "false_alarm_rate"
+    - "accuracy"
+
+  tipping_specific:
+    - "lead_time"
+    - "detection_rate"
+    - "mean_lead_time"
+    - "median_lead_time"
+
+  calibration:
+    - "brier_score"
+    - "expected_calibration_error"
+    - "reliability_diagram"
+
+  uncertainty:
+    - "prediction_interval_coverage"
+    - "prediction_interval_width"
+    - "ensemble_spread"
+
+# ─── Thresholds ───
+thresholds:
+  probability_threshold: 0.5
+  threshold_search: true
+  threshold_metric: "f1"
+  threshold_range: [0.1, 0.9]
+  threshold_steps: 50
+
+# ─── Comparison ───
+comparison:
+  statistical_test: "paired_bootstrap"
+  n_bootstrap: 1000
+  confidence_level: 0.95
+  significance_level: 0.05
+
+# ─── Output ───
+output:
+  save_predictions: true
+  save_metrics: true
+  save_plots: true
+  latex_tables: true
+  format: "json"

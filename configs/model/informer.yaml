@@ -1,0 +1,26 @@
+# ============================================================================
+# Informer Configuration
+# ============================================================================
+
+name: "informer"
+type: "informer"
+description: "Informer with ProbSparse attention for long-sequence climate prediction"
+
+architecture:
+  input_dim: 7
+  d_model: 512
+  n_heads: 8
+  e_layers: 3           # Encoder layers
+  d_layers: 2           # Decoder layers
+  d_ff: 2048
+  factor: 5             # ProbSparse attention factor
+  dropout: 0.05
+  activation: "gelu"
+  output_dim: 1
+  distil: true          # Attention distilling
+  label_len: 24         # Start token length for decoder
+
+uncertainty:
+  mc_dropout: true
+  mc_samples: 50
+  dropout_rate: 0.05

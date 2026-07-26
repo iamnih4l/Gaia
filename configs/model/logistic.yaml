@@ -1,0 +1,22 @@
+# ============================================================================
+# Logistic Regression Baseline Configuration
+# ============================================================================
+
+name: "logistic_regression"
+type: "logistic_regression"
+description: "Logistic regression baseline with handcrafted EWS features"
+
+architecture:
+  penalty: "l2"
+  C: 1.0
+  max_iter: 1000
+  solver: "lbfgs"
+  class_weight: "balanced"
+
+features:
+  - "autocorrelation_lag1"
+  - "variance"
+  - "skewness"
+  - "kurtosis"
+  - "trend_slope"
+  - "detrended_variance"

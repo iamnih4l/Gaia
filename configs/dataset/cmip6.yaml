@@ -1,0 +1,58 @@
+# ============================================================================
+# CMIP6 Model Output Dataset Configuration
+# ============================================================================
+
+name: "cmip6"
+description: "CMIP6 multi-model climate projections (pre-industrial to 2100)"
+
+source:
+  api: "esgf"
+  nodes:
+    - "https://esgf-node.llnl.gov/esg-search/search"
+    - "https://esgf-data.dkrz.de/esg-search/search"
+
+variables:
+  - "tas"       # Near-surface air temperature
+  - "pr"        # Precipitation
+  - "psl"       # Sea level pressure
+  - "tos"       # Sea surface temperature
+  - "msftmz"    # Meridional overturning streamfunction (AMOC)
+  - "siconc"    # Sea ice concentration
+  - "ohc"       # Ocean heat content
+
+experiments:
+  - "historical"
+  - "ssp245"
+  - "ssp585"
+  - "piControl"
+
+models:
+  - "CESM2"
+  - "GFDL-ESM4"
+  - "MPI-ESM1-2-HR"
+  - "UKESM1-0-LL"
+  - "CanESM5"
+
+spatial:
+  resolution: 1.0
+  regrid_to: 1.0
+
+temporal:
+  start_year: 1850
+  end_year: 2100
+  frequency: "monthly"
+
+processing:
+  compute_anomalies: true
+  baseline_period: [1961, 1990]
+  detrend: false
+  normalize: true
+  normalize_method: "standard"
+
+loader:
+  batch_size: 32
+  sequence_length: 120
+  stride: 1
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15

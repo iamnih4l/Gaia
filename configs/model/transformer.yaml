@@ -1,0 +1,26 @@
+# ============================================================================
+# Time Series Transformer Configuration
+# ============================================================================
+
+name: "transformer"
+type: "time_series_transformer"
+description: "Multi-head self-attention transformer for climate time series classification"
+
+architecture:
+  input_dim: 7           # Number of input features
+  d_model: 256           # Transformer model dimension
+  n_heads: 8             # Number of attention heads
+  n_encoder_layers: 6    # Number of encoder layers
+  d_ff: 1024             # Feed-forward dimension
+  dropout: 0.1
+  activation: "gelu"
+  max_seq_len: 512       # Maximum sequence length
+  positional_encoding: "sinusoidal"  # sinusoidal | learned
+  output_dim: 1          # Binary classification (tipping probability)
+  pool_strategy: "cls"   # cls | mean | max
+
+# ─── Uncertainty ───
+uncertainty:
+  mc_dropout: true
+  mc_samples: 50
+  dropout_rate: 0.1

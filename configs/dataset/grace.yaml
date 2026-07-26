@@ -1,0 +1,51 @@
+# ============================================================================
+# GRACE/GRACE-FO Ice Mass Change Dataset Configuration
+# ============================================================================
+
+name: "grace"
+description: "GRACE/GRACE-FO gravity-derived ice mass changes for Greenland/Antarctica"
+
+source:
+  api: "nasa_podaac"
+  product: "GRACE-FO_L3_CSR_RL06"
+  url: "https://podaac.jpl.nasa.gov/"
+
+variables:
+  - "lwe_thickness"  # Liquid water equivalent thickness anomaly
+  - "uncertainty"
+
+spatial:
+  resolution: 1.0  # ~150 km native, regridded
+  regions:
+    greenland:
+      lat_min: 60.0
+      lat_max: 85.0
+      lon_min: -75.0
+      lon_max: -10.0
+    antarctic:
+      lat_min: -90.0
+      lat_max: -60.0
+      lon_min: -180.0
+      lon_max: 180.0
+
+temporal:
+  grace_period: [2002, 2017]
+  grace_fo_period: [2018, 2024]
+  frequency: "monthly"
+  gap_handling: "interpolate"
+
+processing:
+  compute_anomalies: true
+  baseline_period: [2004, 2009]
+  glacial_isostatic_adjustment: true
+  detrend: false
+  normalize: true
+  normalize_method: "standard"
+
+loader:
+  batch_size: 32
+  sequence_length: 36
+  stride: 1
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15

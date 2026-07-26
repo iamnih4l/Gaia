@@ -1,0 +1,39 @@
+# ============================================================================
+# Inference Configuration
+# ============================================================================
+
+# ─── Model ───
+model:
+  checkpoint_path: null    # Path to model checkpoint
+  device: "auto"           # cpu | cuda | auto
+  precision: "float32"     # float32 | float16 | bfloat16
+
+# ─── Inference ───
+inference:
+  batch_size: 64
+  uncertainty:
+    enabled: true
+    method: "mc_dropout"   # mc_dropout | ensemble | both
+    n_samples: 50
+  ensemble:
+    enabled: false
+    model_paths: []
+    aggregation: "mean"    # mean | median | weighted
+
+# ─── Post-processing ───
+postprocessing:
+  probability_threshold: 0.5
+  smoothing:
+    enabled: true
+    method: "exponential"  # exponential | moving_average
+    window: 3
+  min_alert_duration: 2    # Minimum consecutive months above threshold
+
+# ─── API ───
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  timeout: 60
+  max_batch_size: 128
+  cors_origins: ["*"]

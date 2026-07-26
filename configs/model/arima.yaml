@@ -1,0 +1,20 @@
+# ============================================================================
+# ARIMA Baseline Configuration
+# ============================================================================
+
+name: "arima"
+type: "arima"
+description: "ARIMA/AR(1) time series model baseline for tipping detection"
+
+architecture:
+  order: [1, 0, 0]          # AR(1)
+  seasonal_order: [0, 0, 0, 12]
+  trend: "ct"               # constant + trend
+  enforce_stationarity: false
+  enforce_invertibility: false
+
+detection:
+  ar1_threshold_percentile: 95  # Alarm if AR(1) > 95th percentile
+  variance_threshold_percentile: 95
+  window_size: 60               # months
+  min_periods: 24
