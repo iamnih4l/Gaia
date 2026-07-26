@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradient -->
+    <radialGradient id="space-bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0B132B" />
+      <stop offset="60%" stop-color="#050814" />
+      <stop offset="100%" stop-color="#000000" />
+    </radialGradient>
+
+    <!-- Bioluminescent Cyan Glow -->
+    <filter id="neon-cyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur1" />
+      <feGaussianBlur stdDeviation="16" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Emerald Core Glow -->
+    <filter id="neon-emerald" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Linear Gradient for Orbital Rings -->
+    <linearGradient id="orbital-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="50%" stop-color="#4FACFE" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Spacecraft HUD Panel Backdrop -->
+  <rect x="16" y="16" width="480" height="480" rx="110" fill="url(#space-bg)" stroke="#00F2FE" stroke-width="4" stroke-opacity="0.4" />
+
+  <!-- Outer HUD Corner Brackets [ ] -->
+  <path d="M 70,120 L 70,70 L 120,70" fill="none" stroke="#00F2FE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#neon-cyan)" />
+  <path d="M 392,70 L 442,70 L 442,120" fill="none" stroke="#00F2FE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#neon-cyan)" />
+  <path d="M 70,392 L 70,442 L 120,442" fill="none" stroke="#00F2FE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#neon-cyan)" />
+  <path d="M 392,442 L 442,442 L 442,392" fill="none" stroke="#00F2FE" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" filter="url(#neon-cyan)" />
+
+  <!-- Radar Scanline Rings -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#1E293B" stroke-width="2" stroke-dasharray="8 8" />
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#00F2FE" stroke-width="2" stroke-opacity="0.25" />
+  <circle cx="256" cy="256" r="100" fill="none" stroke="#10B981" stroke-width="2" stroke-opacity="0.3" />
+
+  <!-- Tilted Orbital Ellipses -->
+  <g transform="rotate(-25 256 256)">
+    <ellipse cx="256" cy="256" rx="170" ry="65" fill="none" stroke="url(#orbital-grad)" stroke-width="5" filter="url(#neon-cyan)" />
+    <ellipse cx="256" cy="256" rx="170" ry="65" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.8" />
+  </g>
+  <g transform="rotate(35 256 256)">
+    <ellipse cx="256" cy="256" rx="160" ry="55" fill="none" stroke="#A855F7" stroke-width="3" stroke-dasharray="16 10" stroke-opacity="0.7" />
+  </g>
+
+  <!-- Central Globe Sphere & Latitude/Longitude Grid -->
+  <circle cx="256" cy="256" r="75" fill="#070C1B" stroke="#00F2FE" stroke-width="4" filter="url(#neon-cyan)" />
+  
+  <!-- Longitudinal Arcs -->
+  <path d="M 256,181 A 35,75 0 0,0 256,331 A 35,75 0 0,0 256,181" fill="none" stroke="#00F2FE" stroke-width="2" stroke-opacity="0.6" />
+  <path d="M 181,256 L 331,256" fill="none" stroke="#00F2FE" stroke-width="2" stroke-opacity="0.6" />
+  <path d="M 256,181 L 256,331" fill="none" stroke="#00F2FE" stroke-width="2" stroke-opacity="0.8" />
+  
+  <!-- Latitudinal Arcs -->
+  <path d="M 191,218 Q 256,235 321,218" fill="none" stroke="#00F2FE" stroke-width="2" stroke-opacity="0.5" />
+  <path d="M 191,294 Q 256,277 321,294" fill="none" stroke="#00F2FE" stroke-width="2" stroke-opacity="0.5" />
+
+  <!-- Tipping Element Hotspot Nodes (Bioluminescent Markers) -->
+  <circle cx="230" cy="220" r="8" fill="#10B981" filter="url(#neon-emerald)" />
+  <circle cx="230" cy="220" r="3" fill="#FFFFFF" />
+
+  <circle cx="285" cy="245" r="9" fill="#00F2FE" filter="url(#neon-cyan)" />
+  <circle cx="285" cy="245" r="3.5" fill="#FFFFFF" />
+
+  <circle cx="240" cy="290" r="7" fill="#F59E0B" />
+  <circle cx="240" cy="290" r="2.5" fill="#FFFFFF" />
+
+  <!-- Orbital Data Nodes on Ring -->
+  <circle cx="410" cy="184" r="6" fill="#00F2FE" filter="url(#neon-cyan)" />
+  <circle cx="102" cy="328" r="6" fill="#10B981" filter="url(#neon-emerald)" />
+</svg>

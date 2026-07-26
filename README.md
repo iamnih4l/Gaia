@@ -19,6 +19,7 @@
 [🎮 Interactive Quickstart](#-interactive-quickstart) •
 [⚡ Tipping Elements](#-supported-tipping-elements) •
 [🏗️ Architecture](#-system-architecture) •
+[📐 Technical Architecture](TECHNICAL_ARCHITECTURE.md) •
 [🧠 Model Zoo](#-model-zoo) •
 [📡 API & SDK](#-interactive-api--sdk-playground) •
 [📖 Citation](#-citation)
