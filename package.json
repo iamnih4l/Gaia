@@ -1,0 +1,17 @@
+{
+  "name": "gaia-climate-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Research-grade AI platform for Early Detection of Climate Tipping Points with Orbital Command Deck Frontend",
+  "scripts": {
+    "dev": "npx -y concurrently -n \"FASTAPI,WEB\" -c \"green,cyan\" --kill-others \"python -m api.app\" \"npm run dev:next --prefix web\"",
+    "dev:backend": "python -m api.app",
+    "dev:frontend": "npm run dev:next --prefix web",
+    "build": "npm run build --prefix web",
+    "start": "npm run start --prefix web",
+    "lint": "npm run lint --prefix web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

@@ -10,6 +10,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![NeurIPS/ICML Grade](https://img.shields.io/badge/Research-NeurIPS%20%7C%20ICML%20Grade-8A2BE2.svg)](#-citation)
+[![Live Demo - Vercel](https://img.shields.io/badge/Live_Demo-Vercel_Simulation-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://gaia-navy.vercel.app/)
 
 **A Modular, Production-Ready, Research-Grade AI System for Early Detection of Climate Tipping Points**
 
@@ -34,6 +35,14 @@
 ```
 
 </div>
+
+---
+
+> [!IMPORTANT]
+> **🌐 Live Interactive Demo & Real-Time Data**
+> * **Vercel Live Deployment**: Explore the live **Space System Panel & Orbital Command Deck** frontend at **[https://gaia-navy.vercel.app/](https://gaia-navy.vercel.app/)**. 
+>   *(Note: The online Vercel deployment runs in **High-Fidelity Research Simulation Mode** so visitors can explore 3D Earth visualizations, risk telemetry, and model architectures without needing a local GPU cluster or live Python runtime).*
+> * **⚡ 100% Real-Time Data & Live AI Inference**: To experience real-time satellite data ingest and live PyTorch neural network inference, run the system locally! We have architected an **Automated Concurrent Startup Pipeline**—simply running `npm run dev` in `web/` (or at the project root) automatically wakes up and runs BOTH the FastAPI Python backend (`http://localhost:8000`) and the Next.js frontend (`http://localhost:3000`) simultaneously!
 
 ---
 
@@ -102,10 +111,33 @@ mindmap
 
 ## 🎮 Interactive Quickstart
 
-Experience Gaia in action! You can explore the CLI training pipeline, evaluate benchmarks, and test live REST predictions directly from your terminal.
+Experience Gaia in action! You can launch the full-stack web platform with real-time AI inference, explore the CLI training pipeline, evaluate benchmarks, and test live REST predictions directly from your terminal.
 
 <details open>
-<summary><b>🛠️ 1. Environment Setup (Poetry)</b></summary>
+<summary><b>🌐 1. Launch Full-Stack Platform Locally (Real-Time AI + 3D Earth)</b></summary>
+<br>
+
+To experience 100% real-time data, live PyTorch neural network inference, and the Space System Panel UI on your local machine, run our automated dual-server startup command:
+
+```bash
+# Clone the repository
+git clone https://github.com/iamnih4l/Gaia.git
+cd Gaia
+
+# Install backend dependencies (Python 3.10+)
+pip install -r requirements.txt
+
+# Start BOTH the FastAPI Python Backend and Next.js Frontend concurrently!
+cd web
+npm install
+npm run dev
+```
+*💡 **How it works**: Our automated startup pipeline in `web/package.json` uses `concurrently` to automatically wake up and run the FastAPI backend on `http://localhost:8000` while starting the Next.js frontend on `http://localhost:3000`. When accessed locally, the frontend connects to your local runtime for real-time climate tipping point inference!*
+
+</details>
+
+<details>
+<summary><b>🛠️ 2. Environment Setup (Poetry CLI & Python SDK)</b></summary>
 
 ```bash
 # Clone the repository
@@ -119,7 +151,7 @@ poetry shell
 </details>
 
 <details>
-<summary><b>🚂 2. Interactive Training Loop (CLI & Hydra)</b></summary>
+<summary><b>🚂 3. Interactive Training Loop (CLI & Hydra)</b></summary>
 
 Train a **Temporal Fusion Transformer** on AMOC circulation data. You can dynamically override hyperparameters directly from the command line without editing code:
 
@@ -138,7 +170,7 @@ poetry run python scripts/train.py \
 </details>
 
 <details>
-<summary><b>📊 3. Automated Benchmark Evaluation & Plotting</b></summary>
+<summary><b>📊 4. Automated Benchmark Evaluation & Plotting</b></summary>
 
 Evaluate trained models on hold-out test sequences and generate publication-grade ROC curves, Precision-Recall curves, and time-series EWS overlays:
 
