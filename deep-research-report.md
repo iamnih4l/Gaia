@@ -215,4 +215,6 @@ graph LR
 
 ## References  
 
+- **Project Article:** [Beyond Climate Forecasting: Can Artificial Intelligence Detect Earth's Tipping Points?](https://www.linkedin.com/pulse/beyond-climate-forecasting-can-artificial-detect-earths-nihal-brf7c)
+
 The plan above builds on established science: critical slowing down and EWS in climate systems; recent findings of Amazon resilience loss; observed AMOC early-warning evidence; and state-of-art ML in Earth science (e.g. foundation models, GNNs, causal methods). Datasets like ERA5 and NOAA DHW are standard in the community. Throughout, primary sources (IPCC glossary, Nature journals, Copernicus, NOAA) ensure rigor. The team will adhere to open, reproducible research practices at every step.

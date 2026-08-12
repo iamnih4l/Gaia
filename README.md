@@ -45,6 +45,10 @@
 >   *(Note: The online Vercel deployment runs in **High-Fidelity Research Simulation Mode** so visitors can explore 3D Earth visualizations, risk telemetry, and model architectures without needing a local GPU cluster or live Python runtime).*
 > * **⚡ 100% Real-Time Data & Live AI Inference**: To experience real-time satellite data ingest and live PyTorch neural network inference, run the system locally! We have architected an **Automated Concurrent Startup Pipeline**—simply running `npm run dev` in `web/` (or at the project root) automatically wakes up and runs BOTH the FastAPI Python backend (`http://localhost:8000`) and the Next.js frontend (`http://localhost:3000`) simultaneously!
 
+> [!NOTE]
+> **📰 Read the Article**
+> Discover the science, philosophy, and engineering behind Gaia in my comprehensive article: **[Beyond Climate Forecasting: Can Artificial Intelligence Detect Earth's Tipping Points?](https://www.linkedin.com/pulse/beyond-climate-forecasting-can-artificial-detect-earths-nihal-brf7c)**
+
 ---
 
 ## 🌱 Why I Built This

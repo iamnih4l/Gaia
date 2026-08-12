@@ -3,6 +3,7 @@
 > **Version**: 2.4.0-PROD  
 > **Classification**: Research-Grade Open Source / Scientific AI System  
 > **Target Audiences**: Software Architects, ML Engineers, Climate Scientists, Systems Engineers  
+> **Article**: [Beyond Climate Forecasting: Can Artificial Intelligence Detect Earth's Tipping Points?](https://www.linkedin.com/pulse/beyond-climate-forecasting-can-artificial-detect-earths-nihal-brf7c)
 
 ---
 
